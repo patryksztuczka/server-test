@@ -3,6 +3,16 @@ const app = express();
 const port = 3000;
 const packageJson = require("./package.json");
 
+// Add CORS middleware
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // Mock data
 const fruits = [
   { id: 1, name: "Apple", color: "red" },
