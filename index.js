@@ -1,0 +1,38 @@
+const express = require("express");
+const app = express();
+const port = 3000;
+const packageJson = require("./package.json");
+
+// Mock data
+const fruits = [
+  { id: 1, name: "Apple", color: "red" },
+  { id: 2, name: "Banana", color: "yellow" },
+  { id: 3, name: "Orange", color: "orange" },
+  { id: 4, name: "Grape", color: "purple" },
+];
+
+const vegetables = [
+  { id: 1, name: "Carrot", color: "orange" },
+  { id: 2, name: "Broccoli", color: "green" },
+  { id: 3, name: "Spinach", color: "green" },
+  { id: 4, name: "Tomato", color: "red" },
+];
+
+// Endpoints
+app.get("/fruits", (req, res) => {
+  res.json(fruits);
+});
+
+app.get("/vegetables", (req, res) => {
+  res.json(vegetables);
+});
+
+// New version endpoint
+app.get("/version", (req, res) => {
+  res.json({ version: packageJson.version });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
