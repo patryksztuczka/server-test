@@ -34,6 +34,14 @@ app.get("/fruits", (req, res) => {
 });
 
 app.get("/vegetables", (req, res) => {
+  // Simulate a server error
+  res.status(500).json({
+    error: "Failed to fetch vegetables data",
+    message: "Internal server error",
+  });
+
+  return;
+
   res.json(vegetables);
 });
 
